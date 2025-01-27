@@ -1,0 +1,1 @@
+C:\Users\User\Desktop\projects\@um-projects\missing\UM-WIA2004\umwia2004-rust\target\debug\umwia2004-rust.exe: C:\Users\User\Desktop\projects\@um-projects\missing\UM-WIA2004\umwia2004-rust\src\main.rs
