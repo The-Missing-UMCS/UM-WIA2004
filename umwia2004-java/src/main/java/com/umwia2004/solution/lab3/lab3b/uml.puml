@@ -1,0 +1,43 @@
+@startuml
+
+class File {
+    + int size
+    + String name
+}
+
+class FileManager {
+    - Disk disk
+    + allocate(File file): boolean
+}
+
+class Disk {
+    + int totalSize
+    + int blockSize
+    + int blockCount
+    + long freeBlocks
+    + Disk()
+    + isBlockFree(int index): boolean
+    + allocateFile(String fileName, int startIndex, int blockCount): boolean
+    + printDiskStatus(): void
+}
+
+class FileRegistry {
+    - Map<String, FileRegistryRecord> fileRegistry
+    + FileRegistry()
+    + isFileExisted(String fileName): boolean
+    + addRecord(String fileName, int startIndex, int blockCount): void
+    + printRegistry(): void
+}
+
+class FileRegistryRecord {
+    + int startIndex
+    + int blockCount
+}
+
+
+FileManager o-- Disk: manages
+FileManager --> File: handles
+Disk o-- FileRegistry: tracks
+FileRegistry --> FileRegistryRecord: stores
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+
+package "domain" {
+    class DataSize {
+        + long size
+        + Unit unit
+        + toUnit(Unit unit): DataSize
+        + toBytes(): long
+    }
+
+    class File {
+        + DataSize size
+        + String name
+    }
+}
+
+package "helper" {
+    class FileManager {
+        - Disk disk
+        + allocate(File file): boolean
+        + deallocate(String fileName): boolean
+    }
+
+    class Disk {
+        + DataSize totalSize
+        + DataSize blockSize
+        + int blockCount
+        + long freeBlocks
+        + long usedBlocks
+        + Disk()
+        + Disk(DataSize totalSize, DataSize blockSize)
+        + isBlockFree(int index): boolean
+        + allocateFile(String fileName, int startIndex, int blockCount): boolean
+        + removeFile(String fileName): boolean
+        + printDiskStatus(): void
+    }
+
+    class FileRegistry {
+        - Map<String, FileRegistryRecord> fileRegistry
+        + FileRegistry()
+        + isFileExisted(String fileName): boolean
+        + addRecord(String fileName, int startIndex, int blockCount): void
+        + removeRecord(String fileName): FileRegistryRecord
+        + printRegistry(): void
+    }
+
+    class FileRegistryRecord {
+        + int startIndex
+        + int blockCount
+    }
+}
+
+FileManager o-- Disk: manages
+FileManager --> File: handles
+Disk --> DataSize: uses
+Disk o-- FileRegistry: tracks
+FileRegistry --> FileRegistryRecord: stores
+
+@enduml
