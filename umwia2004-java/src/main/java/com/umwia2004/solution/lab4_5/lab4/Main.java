@@ -19,9 +19,10 @@ public class Main {
                 logBlue("Strategy: " + strategy.name());
                 memory.allocate(processes, strategy.findBlock());
                 memory.printMemoryState();
-                memory.clear();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+            } finally {
+                memory.clear();
             }
         });
     }
