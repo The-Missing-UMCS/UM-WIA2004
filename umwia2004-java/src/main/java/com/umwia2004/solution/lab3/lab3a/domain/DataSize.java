@@ -1,12 +1,38 @@
 package com.umwia2004.solution.lab3.lab3a.domain;
 
 public record DataSize(long size, Unit unit) implements Comparable<DataSize> {
+    public static DataSize ZERO = new DataSize(0, Unit.BYTE);
+
+    public static DataSize bytes(long size) {
+        return new DataSize(size, Unit.BYTE);
+    }
+
+    public static DataSize kb(long size) {
+        return new DataSize(size, Unit.KB);
+    }
+
+    public static DataSize mb(long size) {
+        return new DataSize(size, Unit.MB);
+    }
+
+    public static DataSize gb(long size) {
+        return new DataSize(size, Unit.GB);
+    }
+
     public DataSize toUnit(Unit unit) {
         return new DataSize(unit.fromBytes(this.unit.toBytes(size)), unit);
     }
 
     public long toBytes() {
         return unit.toBytes(size);
+    }
+
+    public DataSize add(DataSize dataSize) {
+        return new DataSize(size + dataSize.toUnit(unit).size, unit);
+    }
+
+    public DataSize subtract(DataSize dataSize) {
+        return new DataSize(size - dataSize.toUnit(unit).size, unit);
     }
 
     @Override
