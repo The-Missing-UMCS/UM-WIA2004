@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+control upstream
+control VirtualMemoryManager as vmm
+control MainMemory as mm
+control ReplacementAlgorithm as ra
+
+upstream -> vmm: requires page
+group#LightBlue demandPaging
+    vmm -> mm: check if page is in memory
+    mm --> vmm:
+    opt#orange page is not in memory
+        group#LightBlue loadPageIntoMainMemory
+            vmm -> mm: findNextPfn()
+            mm --> vmm:
+            opt#orange pfn is null
+                group#LightBlue handlePageFault
+                    vmm -> ra: findVpnToReplace()
+                    ra --> vmm:
+                    group#LightBlue removeVpn
+                    vmm -> ra: removeVpn()
+                        vmm -> mm: removeByVpn()
+                        mm --> vmm: pfn
+                    end
+                end
+            end
+            group#LightBlue loadVpn
+                vmm -> mm: loadVpn()
+                vmm -> ra: loadVpn()
+            end
+        end
+    end
+    vmm -> ra: accessVpn();
+    vmm --> upstream: isPageHit
+end
+
+@enduml

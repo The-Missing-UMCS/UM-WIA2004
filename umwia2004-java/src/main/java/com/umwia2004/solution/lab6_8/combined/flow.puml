@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+control upstream
+control VirtualMemoryManager as vmm
+control MainMemory as mm
+control PageMapTable as pmt
+control ReplacementAlgorithm as ra
+
+upstream -> vmm: request for page
+
+group#LightBlue demandPaging
+    vmm -> vmm: check if the PageMapTable has mapping
+
+    opt#orange The page doesn't exist in the main memory
+        group#LightBlue loadPageIntoMainMemory
+            vmm -> mm: findNextPfn()
+            mm --> vmm:
+            opt#orange pfn is null
+                group#LightBlue handlePageFault
+                    vmm -> ra: findVpnToReplace()
+                    ra --> vmm:
+                    vmm -> pmt: translate vpn to pfn
+                    pmt --> vmm:
+                    vmm -> mm: getPageByPfn()
+                    mm --> vmm:
+                    vmm --> vmm: return pfn to replace using unmapPage()
+                end
+            end
+            vmm -> vmm: mapPage()
+        end
+    end
+    autonumber 4
+    vmm -> ra: accessVpn()
+    vmm --> upstream: isPageHit
+end
+
+@enduml
