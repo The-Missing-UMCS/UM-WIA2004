@@ -44,6 +44,13 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.5.0-M3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2</version>
+        </dependency>
+
 
 
     </dependencies>
