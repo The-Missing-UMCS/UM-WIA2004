@@ -1,6 +1,7 @@
 package com.umwia2004.solution.lab4_5.lab5;
 
 import com.umwia2004.solution.lab4_5.lab5.domain.Process;
+import com.umwia2004.solution.lab4_5.lab5.strategy.FirstFit;
 import com.umwia2004.solution.lab4_5.lab5.strategy.MemoryAllocationStrategy;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class Main {
     }
 
     private static List<MemoryAllocationStrategy> getAllocationStrategies() {
-        return List.of(new BestFit());
+        return List.of(new FirstFit());
     }
 
     private static List<Process> getProcesses() {
