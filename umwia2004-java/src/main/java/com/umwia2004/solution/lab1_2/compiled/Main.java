@@ -25,8 +25,8 @@ public class Main {
         String[] headers = new String[]{
             "Process ID",
             "Arrival Time",
-            "Waiting Time",
             "Start Time",
+            "Waiting Time",
             "Burst Time",
             "Turnaround Time"
         };
@@ -39,8 +39,8 @@ public class Main {
                 return new String[]{
                     process.getProcessId(),
                     timeFormat.formatted(process.getArrivalTime().getHour(), process.getArrivalTime().getMinute()),
-                    minuteFormat.formatted(process.getWaitingTime().toMinutes()),
                     timeFormat.formatted(process.getStartTime().getHour(), process.getStartTime().getMinute()),
+                    minuteFormat.formatted(process.getWaitingTime().toMinutes()),
                     minuteFormat.formatted(process.getBurstTime().toMinutes()),
                     minuteFormat.formatted(process.getTurnaroundTime().toMinutes())
                 };

@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // 1. Preparing the data
-        // Assuming that all the processes arrive at time 0
+        //    Assuming that all the processes arrive at time 0
         List<Process> processes = List.of(
             new Process("P1", 5),
             new Process("P2", 3),
