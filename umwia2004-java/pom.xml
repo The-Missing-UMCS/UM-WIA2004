@@ -50,9 +50,6 @@
             <artifactId>annotations</artifactId>
             <version>26.0.2</version>
         </dependency>
-
-
-
     </dependencies>
 
     <build>
