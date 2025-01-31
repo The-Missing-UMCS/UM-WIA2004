@@ -39,3 +39,4 @@ def display_result(processes):
         print(f"{process.process_id}\t\t{process.burst_time}\t\t{process.waiting_time}\t\t{process.turnaround_time}")
 
 main()
+
