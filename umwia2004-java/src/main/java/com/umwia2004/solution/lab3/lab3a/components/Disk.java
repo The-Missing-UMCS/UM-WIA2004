@@ -1,6 +1,7 @@
-package com.umwia2004.solution.lab3.lab3a.helper;
+package com.umwia2004.solution.lab3.lab3a.components;
 
 import com.umwia2004.solution.lab3.lab3a.domain.DataSize;
+import com.umwia2004.solution.util.Asserts;
 import com.umwia2004.solution.util.LogUtil;
 import com.umwia2004.solution.util.TableUtil;
 import lombok.Getter;
@@ -40,7 +41,7 @@ public class Disk {
         this.blockSize = blockSize;
         this.blockCount = (int) Math.ceilDiv(totalSize.toBytes(), blockSize.toBytes());
         this.diskBlocks = new ArrayList<>(blockCount);
-        IntStream.range(0, blockCount).forEach(i -> diskBlocks.add(FREE));
+        IntStream.range(0, blockCount).forEach(_ -> diskBlocks.add(FREE));
         this.freeBlocks = blockCount;
         this.usedBlocks = 0;
         this.fileRegistry = new FileRegistry();
@@ -66,19 +67,15 @@ public class Disk {
         TableUtil.printRowWithIndices(diskBlocks);
     }
 
-    public synchronized boolean allocateFile(String fileName, int startIndex, int blockCount) {
-        if (fileRegistry.isFileExisted(fileName)) {
-            throw new IllegalArgumentException("File already exists");
-        }
+    public boolean allocateFile(String fileName, int startIndex, int blockCount) {
+        Asserts.isFalse(fileRegistry.isFileExisted(fileName), IllegalArgumentException.class, "File already exists");
         fileRegistry.addRecord(fileName, startIndex, blockCount);
         updateBlockStatus(startIndex, blockCount, OCCUPIED);
         return true;
     }
 
-    public synchronized boolean removeFile(String fileName) {
-        if (!fileRegistry.isFileExisted(fileName)) {
-            throw new IllegalArgumentException("File does not exist");
-        }
+    public boolean removeFile(String fileName) {
+        Asserts.isTrue(fileRegistry.isFileExisted(fileName), IllegalArgumentException.class, "File does not exist");
         var record = fileRegistry.removeRecord(fileName);
         updateBlockStatus(record.startIndex(), record.blockCount(), FREE);
         return true;

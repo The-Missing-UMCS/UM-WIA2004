@@ -1,4 +1,4 @@
-package com.umwia2004.solution.lab3.lab3a.helper;
+package com.umwia2004.solution.lab3.lab3a.components;
 
 import com.umwia2004.solution.util.TableUtil;
 

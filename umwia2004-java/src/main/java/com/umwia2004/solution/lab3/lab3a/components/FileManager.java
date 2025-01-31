@@ -1,4 +1,4 @@
-package com.umwia2004.solution.lab3.lab3a.helper;
+package com.umwia2004.solution.lab3.lab3a.components;
 
 import com.umwia2004.solution.lab3.lab3a.domain.File;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ public class FileManager {
             throw new IllegalStateException("Not enough free blocks");
         }
 
-        // 2. Find continuous free blocks and allocate
+        // 2. Find any continuous free blocks to allocate
         for (int startIndex = 0; startIndex < disk.getBlockCount() - blockCount; startIndex++) {
             boolean isFree = areAllBlocksFree(startIndex, blockCount);
             if (isFree) {

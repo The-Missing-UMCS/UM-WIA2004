@@ -52,7 +52,7 @@ public class Disk {
         TableUtil.printRowWithIndices(diskBlocks);
     }
 
-    public synchronized boolean allocateFile(String fileName, int startIndex, int blockCount) {
+    public boolean allocateFile(String fileName, int startIndex, int blockCount) {
         if (fileRegistry.isFileExisted(fileName)) {
             throw new IllegalArgumentException("File already exists");
         }

@@ -2,8 +2,8 @@ package com.umwia2004.solution.lab3.lab3a;
 
 import com.umwia2004.solution.lab3.lab3a.domain.DataSize;
 import com.umwia2004.solution.lab3.lab3a.domain.File;
-import com.umwia2004.solution.lab3.lab3a.helper.Disk;
-import com.umwia2004.solution.lab3.lab3a.helper.FileManager;
+import com.umwia2004.solution.lab3.lab3a.components.Disk;
+import com.umwia2004.solution.lab3.lab3a.components.FileManager;
 
 import java.util.Arrays;
 
