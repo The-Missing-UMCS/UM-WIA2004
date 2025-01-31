@@ -2,11 +2,11 @@
 
 Welcome to the WIA2004 (Operating System) Github repository.
 
-WIA2004 is offered by the [**Faculty of Computer Science and Information Technology (FCSIT)**](http://www.fsktm.um.edu.my/) at the  [**Universiti Malaya (UM)**](https://www.um.edu.my/) in Malaysia. This repository provides solutions implemented in different programming languages to lab questions. Currently the Java and the Python version are completed. However, in the future, this repository is going to offer implementations Golang, Rust, JavaScript, TypeScript, C#, C and C++ version.
+WIA2004 is offered by the [**Faculty of Computer Science and Information Technology (FCSIT)**](http://www.fsktm.um.edu.my/) at the  [**Universiti Malaya (UM)**](https://www.um.edu.my/) in Malaysia. This repository provides lab solutions implemented in multiple programming languages. Currently, Java and Python versions are complete. Future updates will include implementations in Go, Rust, JavaScript, TypeScript, C#, C, and C++.
 
 To get started, feel free to browse through the materials and use them to supplement your learning. Hopefully that you find this repository to be helpful and informative. If you have any questions or suggestions, please do not hesitate to reach out to me.
 
-![last_update_shield](https://img.shields.io/badge/Last%20Update-April%202023-orange)
+![last_update_shield](https://img.shields.io/badge/Last%20Update-January%202025-orange)
 ![license_shield](https://img.shields.io/github/license/fyiernzy/UM-WIA1002)
 
 ## Why This Repository Exists  
